@@ -1,0 +1,16 @@
+
+module my-sshagent_v3 1.0;
+
+require {
+	type user_ssh_agent_t;
+	type user_tmp_t;
+	type cache_home_t;
+	class dir { add_name remove_name write };
+	class sock_file { create unlink };
+	class file write;
+}
+
+#============= user_ssh_agent_t ==============
+allow user_ssh_agent_t cache_home_t:file write;
+allow user_ssh_agent_t user_tmp_t:dir { add_name remove_name write };
+allow user_ssh_agent_t user_tmp_t:sock_file { create unlink };

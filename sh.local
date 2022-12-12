@@ -1,0 +1,13 @@
+#Add any required envvar overrides to this file, it is sourced from /etc/profile
+# User specific environment and startup programs
+export KDETMP=$HOME/tmp
+export TMPDIR=$HOME/tmp
+export ICEAUTHORITY=$HOME/tmp
+export PATH
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+rm -f $HOME/tmp/.ssh-agent.*
+eval $(/usr/bin/ssh-agent -a ~/tmp/.ssh-agent.$$)
+cd $KDETMP
+find -type d -cmin +10 -iname "plasma-csd-generator.*" -exec rm -rf {} > /dev/null \;
+cd $HOME
+

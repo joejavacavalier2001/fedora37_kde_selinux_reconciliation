@@ -1,0 +1,9 @@
+
+module my-dbus_broker 1.0;
+
+require {
+	type user_t;
+	type user_dbusd_t;
+	class system { status start stop };
+}
+allow user_dbusd_t user_t:system { status start stop };

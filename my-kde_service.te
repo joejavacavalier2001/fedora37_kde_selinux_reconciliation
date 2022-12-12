@@ -1,0 +1,9 @@
+
+module my-kde_service 1.0;
+
+require {
+	type user_t;
+	type usr_t;
+	class service { status stop start };
+}
+allow user_t usr_t:service { status stop start };
